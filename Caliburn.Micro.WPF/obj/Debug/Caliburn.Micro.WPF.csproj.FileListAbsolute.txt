@@ -1,0 +1,41 @@
+E:\Download\Codeplex\WPF + Silverlight\Caliburn.Micro\caliburnmicro_d2ce5bf5bb60\src\Caliburn.Micro.WPF\bin\Debug\Caliburn.Micro.XML
+E:\Download\Codeplex\WPF + Silverlight\Caliburn.Micro\caliburnmicro_d2ce5bf5bb60\src\Caliburn.Micro.WPF\bin\Debug\Caliburn.Micro.dll
+E:\Download\Codeplex\WPF + Silverlight\Caliburn.Micro\caliburnmicro_d2ce5bf5bb60\src\Caliburn.Micro.WPF\bin\Debug\Caliburn.Micro.pdb
+E:\Download\Codeplex\WPF + Silverlight\Caliburn.Micro\caliburnmicro_d2ce5bf5bb60\src\Caliburn.Micro.WPF\bin\Debug\System.Windows.Interactivity.dll
+E:\Download\Codeplex\WPF + Silverlight\Caliburn.Micro\caliburnmicro_d2ce5bf5bb60\src\Caliburn.Micro.WPF\bin\Debug\System.Windows.Interactivity.xml
+E:\Download\Codeplex\WPF + Silverlight\Caliburn.Micro\caliburnmicro_d2ce5bf5bb60\src\Caliburn.Micro.WPF\obj\Debug\ResolveAssemblyReference.cache
+E:\Download\Codeplex\WPF + Silverlight\Caliburn.Micro\caliburnmicro_d2ce5bf5bb60\src\Caliburn.Micro.WPF\obj\Debug\Caliburn.Micro.dll
+E:\Download\Codeplex\WPF + Silverlight\Caliburn.Micro\caliburnmicro_d2ce5bf5bb60\src\Caliburn.Micro.WPF\obj\Debug\Caliburn.Micro.pdb
+C:\Dev\DesktopClient\EstroManager\Caliburn.Micro.WPF\bin\Debug\Caliburn.Micro.dll
+C:\Dev\DesktopClient\EstroManager\Caliburn.Micro.WPF\bin\Debug\Caliburn.Micro.pdb
+C:\Dev\DesktopClient\EstroManager\Caliburn.Micro.WPF\bin\Debug\System.Windows.Interactivity.dll
+C:\Dev\DesktopClient\EstroManager\Caliburn.Micro.WPF\bin\Debug\System.Windows.Interactivity.xml
+C:\Dev\DesktopClient\EstroManager\Caliburn.Micro.WPF\bin\Debug\de\System.Windows.Interactivity.resources.dll
+C:\Dev\DesktopClient\EstroManager\Caliburn.Micro.WPF\bin\Debug\en\System.Windows.Interactivity.resources.dll
+C:\Dev\DesktopClient\EstroManager\Caliburn.Micro.WPF\bin\Debug\es\System.Windows.Interactivity.resources.dll
+C:\Dev\DesktopClient\EstroManager\Caliburn.Micro.WPF\bin\Debug\fr\System.Windows.Interactivity.resources.dll
+C:\Dev\DesktopClient\EstroManager\Caliburn.Micro.WPF\bin\Debug\it\System.Windows.Interactivity.resources.dll
+C:\Dev\DesktopClient\EstroManager\Caliburn.Micro.WPF\bin\Debug\ja\System.Windows.Interactivity.resources.dll
+C:\Dev\DesktopClient\EstroManager\Caliburn.Micro.WPF\bin\Debug\ko\System.Windows.Interactivity.resources.dll
+C:\Dev\DesktopClient\EstroManager\Caliburn.Micro.WPF\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
+C:\Dev\DesktopClient\EstroManager\Caliburn.Micro.WPF\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
+C:\Dev\DesktopClient\EstroManager\Caliburn.Micro.WPF\obj\Debug\ResolveAssemblyReference.cache
+C:\Dev\DesktopClient\EstroManager\Caliburn.Micro.WPF\obj\Debug\Caliburn.Micro.dll
+C:\Dev\DesktopClient\EstroManager\Caliburn.Micro.WPF\obj\Debug\Caliburn.Micro.pdb
+C:\Dev\Estro\TinyGest\Caliburn.Micro.WPF\bin\Debug\Caliburn.Micro.XML
+C:\Dev\Estro\TinyGest\Caliburn.Micro.WPF\bin\Debug\Caliburn.Micro.dll
+C:\Dev\Estro\TinyGest\Caliburn.Micro.WPF\bin\Debug\Caliburn.Micro.pdb
+C:\Dev\Estro\TinyGest\Caliburn.Micro.WPF\bin\Debug\System.Windows.Interactivity.dll
+C:\Dev\Estro\TinyGest\Caliburn.Micro.WPF\bin\Debug\System.Windows.Interactivity.xml
+C:\Dev\Estro\TinyGest\Caliburn.Micro.WPF\bin\Debug\de\System.Windows.Interactivity.resources.dll
+C:\Dev\Estro\TinyGest\Caliburn.Micro.WPF\bin\Debug\en\System.Windows.Interactivity.resources.dll
+C:\Dev\Estro\TinyGest\Caliburn.Micro.WPF\bin\Debug\es\System.Windows.Interactivity.resources.dll
+C:\Dev\Estro\TinyGest\Caliburn.Micro.WPF\bin\Debug\fr\System.Windows.Interactivity.resources.dll
+C:\Dev\Estro\TinyGest\Caliburn.Micro.WPF\bin\Debug\it\System.Windows.Interactivity.resources.dll
+C:\Dev\Estro\TinyGest\Caliburn.Micro.WPF\bin\Debug\ja\System.Windows.Interactivity.resources.dll
+C:\Dev\Estro\TinyGest\Caliburn.Micro.WPF\bin\Debug\ko\System.Windows.Interactivity.resources.dll
+C:\Dev\Estro\TinyGest\Caliburn.Micro.WPF\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
+C:\Dev\Estro\TinyGest\Caliburn.Micro.WPF\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
+C:\Dev\Estro\TinyGest\Caliburn.Micro.WPF\obj\Debug\ResolveAssemblyReference.cache
+C:\Dev\Estro\TinyGest\Caliburn.Micro.WPF\obj\Debug\Caliburn.Micro.dll
+C:\Dev\Estro\TinyGest\Caliburn.Micro.WPF\obj\Debug\Caliburn.Micro.pdb
