@@ -1,0 +1,700 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Invoices.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="InvoicesStoreContainer">
+    <EntitySet Name="Customers" EntityType="Invoices.Store.Customers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Invoices" EntityType="Invoices.Store.Invoices" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="InvoiceLines" EntityType="Invoices.Store.InvoiceLines" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Products" EntityType="Invoices.Store.Products" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Orders" EntityType="Invoices.Store.Orders" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrderLines" EntityType="Invoices.Store.OrderLines" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrderNotes" EntityType="Invoices.Store.OrderNotes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="InvoiceNotes" EntityType="Invoices.Store.InvoiceNotes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="InvoiceOrder" EntityType="Invoices.Store.InvoiceOrder" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="InvoiceCustomer" Association="Invoices.Store.InvoiceCustomer">
+      <End Role="Invoice" EntitySet="Invoices" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="InvoiceInvoiceLine" Association="Invoices.Store.InvoiceInvoiceLine">
+      <End Role="Invoice" EntitySet="Invoices" />
+      <End Role="InvoiceLine" EntitySet="InvoiceLines" />
+    </AssociationSet>
+    <AssociationSet Name="InvoiceLineProduct" Association="Invoices.Store.InvoiceLineProduct">
+      <End Role="InvoiceLine" EntitySet="InvoiceLines" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="OrderCustomer" Association="Invoices.Store.OrderCustomer">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InvoiceOrder_Invoice" Association="Invoices.Store.FK_InvoiceOrder_Invoice">
+      <End Role="Invoice" EntitySet="Invoices" />
+      <End Role="InvoiceOrder" EntitySet="InvoiceOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InvoiceOrder_Order" Association="Invoices.Store.FK_InvoiceOrder_Order">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="InvoiceOrder" EntitySet="InvoiceOrder" />
+    </AssociationSet>
+    <AssociationSet Name="OrderOrderLine" Association="Invoices.Store.OrderOrderLine">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderLine" EntitySet="OrderLines" />
+    </AssociationSet>
+    <AssociationSet Name="OrderOrderNote" Association="Invoices.Store.OrderOrderNote">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderNote" EntitySet="OrderNotes" />
+    </AssociationSet>
+    <AssociationSet Name="OrderLineProduct" Association="Invoices.Store.OrderLineProduct">
+      <End Role="OrderLine" EntitySet="OrderLines" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="InvoiceNoteInvoice" Association="Invoices.Store.InvoiceNoteInvoice">
+      <End Role="InvoiceNote" EntitySet="InvoiceNotes" />
+      <End Role="Invoice" EntitySet="Invoices" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Invoices">
+    <Key>
+      <PropertyRef Name="InvoiceId" />
+    </Key>
+    <Property Name="InvoiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="CustomerName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CustomerAddress" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Total" Type="decimal" Nullable="false" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InvoiceLines">
+    <Key>
+      <PropertyRef Name="InvoiceLineId" />
+    </Key>
+    <Property Name="InvoiceLineId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Line" Type="int" Nullable="false" />
+    <Property Name="ProductName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SmallText" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="NumberOfItems" Type="int" Nullable="false" />
+    <Property Name="SubTotal" Type="decimal" Nullable="false" />
+    <Property Name="InvoiceId" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="true" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Price" Type="decimal" Nullable="false" />
+    <Property Name="ValidFrom" Type="datetime" Nullable="false" />
+    <Property Name="ValidTo" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="DeliveryDate" Type="datetime" Nullable="true" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderLines">
+    <Key>
+      <PropertyRef Name="OrderLineId" />
+    </Key>
+    <Property Name="OrderLineId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="ProductName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Line" Type="int" Nullable="false" />
+    <Property Name="OrderId" Type="int" Nullable="false" />
+    <Property Name="Product_ProductId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderNotes">
+    <Key>
+      <PropertyRef Name="OrderNoteId" />
+    </Key>
+    <Property Name="OrderNoteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OrderId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InvoiceNotes">
+    <Key>
+      <PropertyRef Name="InvoiceNoteId" />
+    </Key>
+    <Property Name="InvoiceNoteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="InvoiceId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InvoiceOrder">
+    <Key>
+      <PropertyRef Name="Invoices_InvoiceId" />
+      <PropertyRef Name="Orders_OrderId" />
+    </Key>
+    <Property Name="Invoices_InvoiceId" Type="int" Nullable="false" />
+    <Property Name="Orders_OrderId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="InvoiceCustomer">
+    <End Role="Invoice" Type="Invoices.Store.Invoices" Multiplicity="*" />
+    <End Role="Customer" Type="Invoices.Store.Customers" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="InvoiceInvoiceLine">
+    <End Role="Invoice" Type="Invoices.Store.Invoices" Multiplicity="1" />
+    <End Role="InvoiceLine" Type="Invoices.Store.InvoiceLines" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Invoice">
+        <PropertyRef Name="InvoiceId" />
+      </Principal>
+      <Dependent Role="InvoiceLine">
+        <PropertyRef Name="InvoiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="InvoiceLineProduct">
+    <End Role="InvoiceLine" Type="Invoices.Store.InvoiceLines" Multiplicity="*" />
+    <End Role="Product" Type="Invoices.Store.Products" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="InvoiceLine">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderCustomer">
+    <End Role="Order" Type="Invoices.Store.Orders" Multiplicity="*" />
+    <End Role="Customer" Type="Invoices.Store.Customers" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderOrderLine">
+    <End Role="Order" Type="Invoices.Store.Orders" Multiplicity="1" />
+    <End Role="OrderLine" Type="Invoices.Store.OrderLines" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderId" />
+      </Principal>
+      <Dependent Role="OrderLine">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderOrderNote">
+    <End Role="Order" Type="Invoices.Store.Orders" Multiplicity="1" />
+    <End Role="OrderNote" Type="Invoices.Store.OrderNotes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderId" />
+      </Principal>
+      <Dependent Role="OrderNote">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderLineProduct">
+    <End Role="OrderLine" Type="Invoices.Store.OrderLines" Multiplicity="*" />
+    <End Role="Product" Type="Invoices.Store.Products" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="OrderLine">
+        <PropertyRef Name="Product_ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="InvoiceNoteInvoice">
+    <End Role="InvoiceNote" Type="Invoices.Store.InvoiceNotes" Multiplicity="*" />
+    <End Role="Invoice" Type="Invoices.Store.Invoices" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Invoice">
+        <PropertyRef Name="InvoiceId" />
+      </Principal>
+      <Dependent Role="InvoiceNote">
+        <PropertyRef Name="InvoiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InvoiceOrder_Invoice">
+    <End Role="Invoice" Type="Invoices.Store.Invoices" Multiplicity="1" />
+    <End Role="InvoiceOrder" Type="Invoices.Store.InvoiceOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Invoice">
+        <PropertyRef Name="InvoiceId" />
+      </Principal>
+      <Dependent Role="InvoiceOrder">
+        <PropertyRef Name="Invoices_InvoiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InvoiceOrder_Order">
+    <End Role="InvoiceOrder" Type="Invoices.Store.InvoiceOrder" Multiplicity="*" />
+    <End Role="Order" Type="Invoices.Store.Orders" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderId" />
+      </Principal>
+      <Dependent Role="InvoiceOrder">
+        <PropertyRef Name="Orders_OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Invoices" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="InvoiceEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customers" EntityType="Invoices.Customer" />
+          <EntitySet Name="Invoices" EntityType="Invoices.Invoice" />
+          <AssociationSet Name="InvoiceCustomer" Association="Invoices.InvoiceCustomer">
+            <End Role="Invoice" EntitySet="Invoices" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <EntitySet Name="InvoiceLines" EntityType="Invoices.InvoiceLine" />
+          <AssociationSet Name="InvoiceInvoiceLine" Association="Invoices.InvoiceInvoiceLine">
+            <End Role="Invoice" EntitySet="Invoices" />
+            <End Role="InvoiceLine" EntitySet="InvoiceLines" />
+          </AssociationSet>
+          <EntitySet Name="Products" EntityType="Invoices.Product" />
+          <AssociationSet Name="InvoiceLineProduct" Association="Invoices.InvoiceLineProduct">
+            <End Role="InvoiceLine" EntitySet="InvoiceLines" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <EntitySet Name="Orders" EntityType="Invoices.Order" />
+          <AssociationSet Name="OrderCustomer" Association="Invoices.OrderCustomer">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <EntitySet Name="OrderLines" EntityType="Invoices.OrderLine" />
+          <AssociationSet Name="InvoiceOrder" Association="Invoices.InvoiceOrder">
+            <End Role="Invoice" EntitySet="Invoices" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <EntitySet Name="OrderNotes" EntityType="Invoices.OrderNote" />
+          <AssociationSet Name="OrderOrderLine" Association="Invoices.OrderOrderLine">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderLine" EntitySet="OrderLines" />
+          </AssociationSet>
+          <AssociationSet Name="OrderOrderNote" Association="Invoices.OrderOrderNote">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderNote" EntitySet="OrderNotes" />
+          </AssociationSet>
+          <AssociationSet Name="OrderLineProduct" Association="Invoices.OrderLineProduct">
+            <End Role="OrderLine" EntitySet="OrderLines" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <EntitySet Name="InvoiceNotes" EntityType="Invoices.InvoiceNote" />
+          <AssociationSet Name="InvoiceNoteInvoice" Association="Invoices.InvoiceNoteInvoice">
+            <End Role="InvoiceNote" EntitySet="InvoiceNotes" />
+            <End Role="Invoice" EntitySet="Invoices" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Type="Int32" Name="CustomerId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Address" Nullable="false" />
+          <NavigationProperty Name="Invoices" Relationship="Invoices.InvoiceCustomer" FromRole="Customer" ToRole="Invoice" />
+          <NavigationProperty Name="Orders" Relationship="Invoices.OrderCustomer" FromRole="Customer" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="InvoiceId" />
+          </Key>
+          <Property Type="Int32" Name="InvoiceId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Number" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="String" Name="CustomerName" Nullable="false" />
+          <Property Type="String" Name="CustomerAddress" Nullable="false" />
+          <Property Type="Decimal" Name="Total" Nullable="false" />
+          <NavigationProperty Name="CustomerRef" Relationship="Invoices.InvoiceCustomer" FromRole="Invoice" ToRole="Customer" />
+          <NavigationProperty Name="Lines" Relationship="Invoices.InvoiceInvoiceLine" FromRole="Invoice" ToRole="InvoiceLine" />
+          <NavigationProperty Name="Orders" Relationship="Invoices.InvoiceOrder" FromRole="Invoice" ToRole="Order" />
+          <NavigationProperty Name="AdministrativeInvoiceNotes" Relationship="Invoices.InvoiceNoteInvoice" FromRole="Invoice" ToRole="InvoiceNote" />
+          <Property Type="Int32" Name="CustomerId" Nullable="false" />
+        </EntityType>
+        <Association Name="InvoiceCustomer">
+          <End Type="Invoices.Invoice" Role="Invoice" Multiplicity="*" />
+          <End Type="Invoices.Customer" Role="Customer" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Invoice">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="InvoiceLine">
+          <Key>
+            <PropertyRef Name="InvoiceLineId" />
+          </Key>
+          <Property Type="Int32" Name="InvoiceLineId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Line" Nullable="false" />
+          <Property Type="String" Name="ProductName" Nullable="false" />
+          <Property Type="String" Name="SmallText" Nullable="true" />
+          <Property Type="Int32" Name="NumberOfItems" Nullable="false" />
+          <Property Type="Decimal" Name="SubTotal" Nullable="false" />
+          <NavigationProperty Name="Invoice" Relationship="Invoices.InvoiceInvoiceLine" FromRole="InvoiceLine" ToRole="Invoice" />
+          <NavigationProperty Name="ProductRef" Relationship="Invoices.InvoiceLineProduct" FromRole="InvoiceLine" ToRole="Product" />
+          <Property Type="Int32" Name="InvoiceId" Nullable="false" />
+          <Property Type="Int32" Name="ProductId" Nullable="true" />
+          <Property Type="Int32" Name="Quantity" Nullable="false" />
+        </EntityType>
+        <Association Name="InvoiceInvoiceLine">
+          <End Type="Invoices.Invoice" Role="Invoice" Multiplicity="1" />
+          <End Type="Invoices.InvoiceLine" Role="InvoiceLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice">
+              <PropertyRef Name="InvoiceId" />
+            </Principal>
+            <Dependent Role="InvoiceLine">
+              <PropertyRef Name="InvoiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Type="Int32" Name="ProductId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="Decimal" Name="Price" Nullable="false" />
+          <Property Type="DateTime" Name="ValidFrom" Nullable="false" />
+          <Property Type="DateTime" Name="ValidTo" Nullable="true" />
+        </EntityType>
+        <Association Name="InvoiceLineProduct">
+          <End Type="Invoices.InvoiceLine" Role="InvoiceLine" Multiplicity="*" />
+          <End Type="Invoices.Product" Role="Product" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="InvoiceLine">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Type="Int32" Name="OrderId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Number" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Invoices.OrderCustomer" FromRole="Order" ToRole="Customer" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" />
+          <Property Type="DateTime" Name="DeliveryDate" Nullable="true" />
+          <NavigationProperty Name="Invoices" Relationship="Invoices.InvoiceOrder" FromRole="Order" ToRole="Invoice" />
+          <NavigationProperty Name="Lines" Relationship="Invoices.OrderOrderLine" FromRole="Order" ToRole="OrderLine" />
+          <NavigationProperty Name="Notes" Relationship="Invoices.OrderOrderNote" FromRole="Order" ToRole="OrderNote" />
+          <Property Type="Int32" Name="CustomerId" Nullable="false" />
+        </EntityType>
+        <Association Name="OrderCustomer">
+          <End Type="Invoices.Order" Role="Order" Multiplicity="*" />
+          <End Type="Invoices.Customer" Role="Customer" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="OrderLine">
+          <Key>
+            <PropertyRef Name="OrderLineId" />
+          </Key>
+          <Property Type="Int32" Name="OrderLineId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Order" Relationship="Invoices.OrderOrderLine" FromRole="OrderLine" ToRole="Order" />
+          <Property Type="Int32" Name="Quantity" Nullable="false" />
+          <Property Type="String" Name="ProductName" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Invoices.OrderLineProduct" FromRole="OrderLine" ToRole="Product" />
+          <Property Type="Int32" Name="Line" Nullable="false" />
+          <Property Type="Int32" Name="OrderId" Nullable="false" />
+        </EntityType>
+        <Association Name="InvoiceOrder">
+          <End Type="Invoices.Invoice" Role="Invoice" Multiplicity="*" />
+          <End Type="Invoices.Order" Role="Order" Multiplicity="*" />
+        </Association>
+        <EntityType Name="OrderNote">
+          <Key>
+            <PropertyRef Name="OrderNoteId" />
+          </Key>
+          <Property Type="Int32" Name="OrderNoteId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Order" Relationship="Invoices.OrderOrderNote" FromRole="OrderNote" ToRole="Order" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" />
+          <Property Type="String" Name="Text" Nullable="false" />
+          <Property Type="Int32" Name="OrderId" Nullable="false" />
+        </EntityType>
+        <Association Name="OrderOrderLine">
+          <End Type="Invoices.Order" Role="Order" Multiplicity="1" />
+          <End Type="Invoices.OrderLine" Role="OrderLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderLine">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OrderOrderNote">
+          <End Type="Invoices.Order" Role="Order" Multiplicity="1" />
+          <End Type="Invoices.OrderNote" Role="OrderNote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderNote">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OrderLineProduct">
+          <End Type="Invoices.OrderLine" Role="OrderLine" Multiplicity="*" />
+          <End Type="Invoices.Product" Role="Product" Multiplicity="1" />
+        </Association>
+        <EntityType Name="InvoiceNote">
+          <Key>
+            <PropertyRef Name="InvoiceNoteId" />
+          </Key>
+          <Property Type="Int32" Name="InvoiceNoteId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" />
+          <Property Type="String" Name="Text" Nullable="false" />
+          <NavigationProperty Name="Invoice" Relationship="Invoices.InvoiceNoteInvoice" FromRole="InvoiceNote" ToRole="Invoice" />
+          <Property Type="Int32" Name="InvoiceId" Nullable="false" />
+        </EntityType>
+        <Association Name="InvoiceNoteInvoice">
+          <End Type="Invoices.InvoiceNote" Role="InvoiceNote" Multiplicity="*" />
+          <End Type="Invoices.Invoice" Role="Invoice" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice">
+              <PropertyRef Name="InvoiceId" />
+            </Principal>
+            <Dependent Role="InvoiceNote">
+              <PropertyRef Name="InvoiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="InvoicesStoreContainer" CdmEntityContainer="InvoiceEntities">
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="IsTypeOf(Invoices.Customer)">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Invoices">
+      <EntityTypeMapping TypeName="IsTypeOf(Invoices.Invoice)">
+        <MappingFragment StoreEntitySet="Invoices">
+          <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InvoiceLines">
+      <EntityTypeMapping TypeName="IsTypeOf(Invoices.InvoiceLine)">
+        <MappingFragment StoreEntitySet="InvoiceLines">
+          <ScalarProperty Name="InvoiceLineId" ColumnName="InvoiceLineId" />
+          <ScalarProperty Name="Line" ColumnName="Line" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="SmallText" ColumnName="SmallText" />
+          <ScalarProperty Name="NumberOfItems" ColumnName="NumberOfItems" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="IsTypeOf(Invoices.Product)">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ValidFrom" ColumnName="ValidFrom" />
+          <ScalarProperty Name="ValidTo" ColumnName="ValidTo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="IsTypeOf(Invoices.Order)">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderLines">
+      <EntityTypeMapping TypeName="IsTypeOf(Invoices.OrderLine)">
+        <MappingFragment StoreEntitySet="OrderLines">
+          <ScalarProperty Name="OrderLineId" ColumnName="OrderLineId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Line" ColumnName="Line" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderNotes">
+      <EntityTypeMapping TypeName="IsTypeOf(Invoices.OrderNote)">
+        <MappingFragment StoreEntitySet="OrderNotes">
+          <ScalarProperty Name="OrderNoteId" ColumnName="OrderNoteId" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InvoiceNotes">
+      <EntityTypeMapping TypeName="IsTypeOf(Invoices.InvoiceNote)">
+        <MappingFragment StoreEntitySet="InvoiceNotes">
+          <ScalarProperty Name="InvoiceNoteId" ColumnName="InvoiceNoteId" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="InvoiceOrder" TypeName="Invoices.InvoiceOrder" StoreEntitySet="InvoiceOrder">
+      <EndProperty Name="Invoice">
+        <ScalarProperty Name="InvoiceId" ColumnName="Invoices_InvoiceId" />
+      </EndProperty>
+      <EndProperty Name="Order">
+        <ScalarProperty Name="OrderId" ColumnName="Orders_OrderId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="OrderLineProduct" TypeName="Invoices.OrderLineProduct" StoreEntitySet="OrderLines">
+      <EndProperty Name="Product">
+        <ScalarProperty Name="ProductId" ColumnName="Product_ProductId" />
+      </EndProperty>
+      <EndProperty Name="OrderLine">
+        <ScalarProperty Name="OrderLineId" ColumnName="OrderLineId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="InvoiceModel" ZoomLevel="82" >
+        <EntityTypeShape EntityType="Invoices.Customer" Width="1.5" PointX="0.5" PointY="0.5" Height="1.9802864583333335" />
+        <EntityTypeShape EntityType="Invoices.Invoice" Width="1.5" PointX="3.125" PointY="0.5" Height="3.1340950520833331" />
+        <AssociationConnector Association="Invoices.InvoiceCustomer">
+          <ConnectorPoint PointX="3.125" PointY="1.4901432291666668" />
+          <ConnectorPoint PointX="2" PointY="1.4901432291666668" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Invoices.InvoiceLine" Width="1.5" PointX="5.25" PointY="0.875" Height="3.1340950520833326" />
+        <AssociationConnector Association="Invoices.InvoiceInvoiceLine">
+          <ConnectorPoint PointX="4.625" PointY="2.2545475260416667" />
+          <ConnectorPoint PointX="5.25" PointY="2.2545475260416667" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Invoices.Product" Width="1.5" PointX="6.625" PointY="4.25" Height="2.172587890625" />
+        <AssociationConnector Association="Invoices.InvoiceLineProduct">
+          <ConnectorPoint PointX="6" PointY="4.0090950520833326" />
+          <ConnectorPoint PointX="6" PointY="4.2490950520833328" />
+          <ConnectorPoint PointX="6.385" PointY="4.2490950520833328" />
+          <ConnectorPoint PointX="6.385" PointY="4.8868949726562487" />
+          <ConnectorPoint PointX="6.625" PointY="4.8868949726562487" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Invoices.Order" Width="1.5" PointX="2.625" PointY="4.25" Height="2.7494921874999996" />
+        <AssociationConnector Association="Invoices.OrderCustomer">
+          <ConnectorPoint PointX="3.1269525816898347" PointY="4.25" />
+          <ConnectorPoint PointX="3.1269525816898347" PointY="3.8840950520833335" />
+          <ConnectorPoint PointX="2.875" PointY="3.8840950520833335" />
+          <ConnectorPoint PointX="2.875" PointY="2.01646684375" />
+          <ConnectorPoint PointX="2" PointY="2.01646684375" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Invoices.OrderLine" Width="1.5" PointX="4.625" PointY="4.75" Height="2.3648893229166656" />
+        <AssociationConnector Association="Invoices.InvoiceOrder">
+          <ConnectorPoint PointX="3.6884762908449176" PointY="3.6340950520833331" />
+          <ConnectorPoint PointX="3.6884762908449176" PointY="4.25" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Invoices.OrderNote" Width="1.5" PointX="0.5" PointY="5.375" Height="1.9802864583333335" />
+        <AssociationConnector Association="Invoices.OrderOrderLine">
+          <ConnectorPoint PointX="4.125" PointY="5.87474609375" />
+          <ConnectorPoint PointX="4.625" PointY="5.87474609375" />
+        </AssociationConnector>
+        <AssociationConnector Association="Invoices.OrderOrderNote">
+          <ConnectorPoint PointX="2.625" PointY="6.18724609375" />
+          <ConnectorPoint PointX="2" PointY="6.18724609375" />
+        </AssociationConnector>
+        <AssociationConnector Association="Invoices.OrderLineProduct">
+          <ConnectorPoint PointX="6.125" PointY="5.7172414316406241" />
+          <ConnectorPoint PointX="6.625" PointY="5.7172414316406241" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Invoices.InvoiceNote" Width="1.5" PointX="0.5" PointY="3.125" Height="1.9802864583333335" />
+        <AssociationConnector Association="Invoices.InvoiceNoteInvoice">
+          <ConnectorPoint PointX="2" PointY="3.3795475260416667" />
+          <ConnectorPoint PointX="2.7916666666666665" PointY="3.3795475260416663" />
+          <ConnectorPoint PointX="2.9583333333333335" PointY="3.3795475260416667" />
+          <ConnectorPoint PointX="3.125" PointY="3.3795475260416667" />
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

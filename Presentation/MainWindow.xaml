@@ -1,0 +1,53 @@
+﻿<Window x:Class="Estro.TinyGest.Presentation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:my="clr-namespace:Estro.TinyGest.Presentation"
+        xmlns:p="clr-namespace:Estro.TinyGest.Presentation.Properties"
+        xmlns:inv="clr-namespace:Estro.TinyGest.Presentation.View.Invoice"
+        Title="MainWindow" Height="300" Width="300">
+        <Window.CommandBindings>
+            <CommandBinding Command="ApplicationCommands.Close" Executed="Close_Executed" />
+            <CommandBinding Command="my:AppCommands.AddNew" Executed="OnAddNewEntry" />
+            <CommandBinding Command="my:AppCommands.Clear" Executed="OnClearEntry" CanExecute="OnHasSelectedEntries" />
+            <CommandBinding Command="my:AppCommands.Delete" Executed="OnDeleteEntry" CanExecute="OnHasSelectedEntries" />
+            <CommandBinding Command="my:AppCommands.Copy" Executed="OnCopyEntry" CanExecute="OnHasSelectedEntries" />
+            <CommandBinding Command="my:AppCommands.Paste" Executed="OnPasteEntry" CanExecute="OnHasSelectedEntries" /> 
+        </Window.CommandBindings>
+    <Window.Resources>
+        
+    </Window.Resources>
+    <DockPanel   Name="dockPanelMain">
+        <Menu Name="menuBar"  DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+               <MenuItem Header="E_xit" Command="ApplicationCommands.Close" />
+            </MenuItem>
+        </Menu>
+        <ToolBarTray Name="toolBar" DockPanel.Dock="Top" Orientation="Horizontal" />
+        <StatusBar Name="statusBar" DockPanel.Dock="Bottom">
+            <StatusBarItem Content="Status" />
+        </StatusBar>
+        <TabControl>
+            <TabItem Header="{x:Static p:Resources.Invoices}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="200" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />    
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" >
+                        <StackPanel Orientation="Horizontal" Height="25"/>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <inv:InvoiceListView  Height="175"/>
+                        </ScrollViewer>
+                    </StackPanel>
+                    <GridSplitter VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="4" Grid.Row="1" />
+                    <ScrollViewer VerticalScrollBarVisibility="Auto"  Grid.Row="2" >
+                        <inv:InvoiceView/>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        
+    </DockPanel>
+
+</Window>
