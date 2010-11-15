@@ -1,8 +1,0 @@
-E:\Download\Codeplex\WPF + Silverlight\Caliburn.Micro\caliburnmicro_d2ce5bf5bb60\src\Caliburn.Micro.WP7\Bin\Debug\Caliburn.Micro.XML
-E:\Download\Codeplex\WPF + Silverlight\Caliburn.Micro\caliburnmicro_d2ce5bf5bb60\src\Caliburn.Micro.WP7\Bin\Debug\Caliburn.Micro.dll
-E:\Download\Codeplex\WPF + Silverlight\Caliburn.Micro\caliburnmicro_d2ce5bf5bb60\src\Caliburn.Micro.WP7\Bin\Debug\Caliburn.Micro.pdb
-E:\Download\Codeplex\WPF + Silverlight\Caliburn.Micro\caliburnmicro_d2ce5bf5bb60\src\Caliburn.Micro.WP7\Bin\Debug\System.Windows.Interactivity.dll
-E:\Download\Codeplex\WPF + Silverlight\Caliburn.Micro\caliburnmicro_d2ce5bf5bb60\src\Caliburn.Micro.WP7\Bin\Debug\System.Windows.Interactivity.xml
-E:\Download\Codeplex\WPF + Silverlight\Caliburn.Micro\caliburnmicro_d2ce5bf5bb60\src\Caliburn.Micro.WP7\obj\Debug\ResolveAssemblyReference.cache
-E:\Download\Codeplex\WPF + Silverlight\Caliburn.Micro\caliburnmicro_d2ce5bf5bb60\src\Caliburn.Micro.WP7\obj\Debug\Caliburn.Micro.dll
-E:\Download\Codeplex\WPF + Silverlight\Caliburn.Micro\caliburnmicro_d2ce5bf5bb60\src\Caliburn.Micro.WP7\obj\Debug\Caliburn.Micro.pdb
